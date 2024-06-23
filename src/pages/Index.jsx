@@ -1,4 +1,4 @@
-import { Container, VStack, Heading, FormControl, FormLabel, Input, Button, useToast, Box, Text, Flex } from "@chakra-ui/react";
+import { Container, VStack, Heading, FormControl, FormLabel, Input, Button, useToast, Box, Text, Flex, Link } from "@chakra-ui/react";
 import { useState } from "react";
 import { FaUniversity } from "react-icons/fa";
 
@@ -25,13 +25,13 @@ const Index = () => {
 
   return (
     <Container centerContent maxW="container.md" height="100vh" display="flex" flexDirection="column" justifyContent="space-between" alignItems="center" p={4}>
-      <Box as="header" width="100%" bg="blue.800" color="white" p={4} textAlign="center">
+      <Box as="header" width="100%" bg="blue.800" color="white" p={4} textAlign="center" boxShadow="md">
         <Flex align="center" justify="center">
           <FaUniversity size="2em" />
           <Heading as="h1" size="lg" ml={2}>Research Study Sign-Up</Heading>
         </Flex>
       </Box>
-      <VStack spacing={4} as="form" onSubmit={handleSubmit} width="100%">
+      <VStack spacing={4} as="form" onSubmit={handleSubmit} width="100%" bg="gray.50" p={8} borderRadius="md" boxShadow="md">
         <FormControl id="name" isRequired>
           <FormLabel>Name</FormLabel>
           <Input type="text" value={name} onChange={(e) => setName(e.target.value)} />
@@ -39,6 +39,7 @@ const Index = () => {
         <FormControl id="email" isRequired>
           <FormLabel>Email</FormLabel>
           <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <Link color="blue.500" mt={2} alignSelf="flex-start">Forget Password?</Link>
         </FormControl>
         <FormControl id="details">
           <FormLabel>Additional Details</FormLabel>
@@ -46,7 +47,7 @@ const Index = () => {
         </FormControl>
         <Button type="submit" colorScheme="blue" mt={4}>Submit</Button>
       </VStack>
-      <Box as="footer" width="100%" bg="blue.800" color="white" p={4} textAlign="center">
+      <Box as="footer" width="100%" bg="blue.800" color="white" p={4} textAlign="center" boxShadow="md">
         <Text>Contact us at research@university.edu</Text>
       </Box>
     </Container>
