@@ -1,5 +1,6 @@
-import { Container, VStack, Heading, FormControl, FormLabel, Input, Button, useToast } from "@chakra-ui/react";
+import { Container, VStack, Heading, FormControl, FormLabel, Input, Button, useToast, Box, Text, Flex } from "@chakra-ui/react";
 import { useState } from "react";
+import { FaUniversity } from "react-icons/fa";
 
 const Index = () => {
   const [name, setName] = useState("");
@@ -23,9 +24,14 @@ const Index = () => {
   };
 
   return (
-    <Container centerContent maxW="container.md" height="100vh" display="flex" flexDirection="column" justifyContent="center" alignItems="center">
-      <VStack spacing={4} as="form" onSubmit={handleSubmit}>
-        <Heading as="h1" size="xl">Research Study Sign-Up</Heading>
+    <Container centerContent maxW="container.md" height="100vh" display="flex" flexDirection="column" justifyContent="space-between" alignItems="center" p={4}>
+      <Box as="header" width="100%" bg="blue.800" color="white" p={4} textAlign="center">
+        <Flex align="center" justify="center">
+          <FaUniversity size="2em" />
+          <Heading as="h1" size="lg" ml={2}>Research Study Sign-Up</Heading>
+        </Flex>
+      </Box>
+      <VStack spacing={4} as="form" onSubmit={handleSubmit} width="100%">
         <FormControl id="name" isRequired>
           <FormLabel>Name</FormLabel>
           <Input type="text" value={name} onChange={(e) => setName(e.target.value)} />
@@ -40,6 +46,9 @@ const Index = () => {
         </FormControl>
         <Button type="submit" colorScheme="blue" mt={4}>Submit</Button>
       </VStack>
+      <Box as="footer" width="100%" bg="blue.800" color="white" p={4} textAlign="center">
+        <Text>Contact us at research@university.edu</Text>
+      </Box>
     </Container>
   );
 };
