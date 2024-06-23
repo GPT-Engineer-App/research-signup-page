@@ -6,6 +6,7 @@ const Index = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [details, setDetails] = useState("");
+  const [forgotPassword, setForgotPassword] = useState(false);
   const toast = useToast();
 
   const handleSubmit = (e) => {
@@ -23,9 +24,20 @@ const Index = () => {
     setDetails("");
   };
 
+  const handleForgotPassword = () => {
+    setForgotPassword(true);
+    toast({
+      title: "Password reset link sent.",
+      description: "Please check your email for the password reset link.",
+      status: "info",
+      duration: 5000,
+      isClosable: true,
+    });
+  };
+
   return (
     <Container centerContent maxW="container.md" height="100vh" display="flex" flexDirection="column" justifyContent="space-between" alignItems="center" p={4} bg="gray.50">
-      <Box as="header" width="100%" bgImage="url('/path/to/background.jpg')" bgSize="cover" color="white" p={4} textAlign="center">
+      <Box as="header" width="100%" bgImage="url('/path/to/realistic-background.jpg')" bgSize="cover" color="white" p={4} textAlign="center">
         <Flex align="center" justify="center">
           <FaUniversity size="2em" />
           <Heading as="h1" size="lg" ml={2} textShadow="2px 2px 4px rgba(0, 0, 0, 0.5)">Research Study Sign-Up</Heading>
@@ -41,6 +53,7 @@ const Index = () => {
             <FormLabel>Email</FormLabel>
             <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
           </FormControl>
+          <Link color="teal.500" onClick={handleForgotPassword} alignSelf="flex-start">Forget Password?</Link>
           <FormControl id="details">
             <FormLabel>Additional Details</FormLabel>
             <Input type="text" value={details} onChange={(e) => setDetails(e.target.value)} />
